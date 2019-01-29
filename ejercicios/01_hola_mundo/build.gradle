@@ -1,22 +1,18 @@
 plugins {
     id 'java'
     id 'application'
-    id 'com.github.johnrengelman.shadow' version '4.0.2'
 }
 
 repositories {
   mavenCentral()
-  jcenter()
 }
 
 sourceCompatibility = 1.8
-
 mainClassName = 'HelloWorld'
-
 
 dependencies {
     implementation 'com.sparkjava:spark-core:2.8.0'
+    implementation 'org.json:json:20180813'
 }
 
-apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'java'

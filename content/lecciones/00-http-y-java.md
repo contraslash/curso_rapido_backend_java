@@ -1,0 +1,132 @@
+Title: HTTP y Java
+Author: Mauricio Collazos
+Date: 2019-01-30
+![]()
+---
+class: center, middle, light, first-slide
+# HTTP y Servicios web en Java
+## Mauricio Collazos
+.footnote[]
+---
+class:  middle, light
+# HTTP
+- Recursos
+  - Métodos
+        - GET
+        - PUT
+        - POST
+        - DELETE
+  - Respuestas
+        - 200: OK
+        - 201: Created
+        - 301: Moved Permanently
+        - 302: Moved
+        - 400: Bad Request
+        - 401: Unauthorized
+        - 403: Forbidden
+        - 404: Not Found
+        - 405: Method Not Allowed
+        - 500: Internal Server Error
+        - 502: Bad Gateway
+        - 503: Service Unavailable
+        - 504: Gateway Timeout
+  - Encabezados
+
+---
+class: center, middle, light
+# No todo Web Service es RESTful
+- Negociación de contenido
+- HATEOAS (Hypermedia As The Engiene of Application State)
+- Seguridad
+- Versionamiento
+
+---
+class: center, middle, light
+# Conceptos importantes para desarrollar APIs
+- Mantener todo modular
+- Facil deexplorar
+- Que satisfaga los requerimientos
+- Facil de extender
+- Mantenga tanto privado como sea posible
+- Evite cambiar endpoints y especificaciones
+- Que los nombres sean explicatorios
+- Documente TODO
+---
+class: center, middle, light
+
+# [12 Factor App](https://12factor.net/es/)
+---
+# Estructura de un proyecto en gradle
+```bash
+├── build.gradle
+└── src
+    └── main
+        └── java
+            └── HelloWorld.java
+```
+
+---
+# Manejo de dependencias con gradle
+```groovy
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {}
+
+sourceCompatibility = 1.8
+mainClassName = 'HelloWorld'
+
+dependencies {}
+
+apply plugin: 'java'
+```
+---
+class: center, middle, light
+# Microframeworks
+- Livianos
+- Menos componentes
+- Menor curva de aprendizaje
+---
+class: center, middle, light
+# Java Spark
+![https://i.blogs.es/05794a/images/1366_2000.jpeg](https://i.blogs.es/05794a/images/1366_2000.jpeg)
+---
+# Hola mundo
+
+```java
+get("/", (req, res) -> "Hola mundo!");
+```
+
+---
+# Parámetros por GET
+
+```java
+get("/params", (req, res) -> {
+    return req.queryParams("param1");
+});
+```
+
+---
+# Parámetros por POST
+
+```java
+post("/", (req, res) -> {
+    return req.body();
+});
+```
+---
+# Usando org.json
+
+```groovy
+implementation 'org.json:json:20180813'
+```
+
+```java
+put("/json", (req, res) -> {
+    JSONObject jsonObject = new JSONObject(req.body());
+    System.out.println(jsonObject);
+    return jsonObject.get("hola");
+});
+```
