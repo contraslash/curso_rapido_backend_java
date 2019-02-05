@@ -1,0 +1,41 @@
+// Antes de compilar el proyecto, ActiveJDBC debe entender la base de datos y hacer los mapeos necesarios
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'org.javalite', name: 'activejdbc-gradle-plugin', version: '2.2'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'application'
+}
+
+
+repositories {
+  mavenCentral()
+  maven { url 'http://repo.javalite.io' }
+}
+
+sourceCompatibility = 1.8
+mainClassName = 'HelloWorld'
+
+dependencies {
+    // Spark
+    implementation 'com.sparkjava:spark-core:2.8.0'
+    // JSON
+    implementation 'org.json:json:20180813'
+    // GSON
+    implementation 'com.google.code.gson:gson:2.8.5'
+    // Logger
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.5'
+    // El driver JDBC de sqlite3
+    compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.7.2'
+    // ActiveJDBC
+    compile group: 'org.javalite', name: 'activejdbc', version: '2.2'
+}
+
+apply plugin: 'java'
+apply plugin: 'org.javalite.activejdbc'
