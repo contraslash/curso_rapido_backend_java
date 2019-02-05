@@ -11,15 +11,20 @@ public class TareaDAO implements Dao<Tarea>{
 
     @Override
     public List<Tarea> todos() {
+        return Tarea.findAll();
+    }
 
-        //return Tarea.findAll();
-        return null;
+    public void crearFromJson(String json)
+    {
+        Tarea tarea = new Tarea();
+        tarea.fromMap(JsonHelper.toMap(json));
+        tarea.saveIt();
     }
 
     public void crear(Tarea t) {
-//        t.set("nombre", t.nombre);
-//        t.set("descripcion", t.descripcion);
-//        t.saveIt();
+        // t.set("nombre", t.nombre);
+        // t.set("descripcion", t.descripcion);
+        t.saveIt();
     }
 
     @Override

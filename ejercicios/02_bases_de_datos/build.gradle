@@ -29,6 +29,9 @@ dependencies {
     implementation 'org.json:json:20180813'
     // GSON
     implementation 'com.google.code.gson:gson:2.8.5'
+    // https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-core-asl
+    compile group: 'org.codehaus.jackson', name: 'jackson-core-asl', version: '1.8.0'
+    compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.8.0'
     // Logger
     compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.5'
     // El driver JDBC de sqlite3
