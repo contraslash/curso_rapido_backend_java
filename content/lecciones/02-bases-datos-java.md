@@ -102,6 +102,36 @@ public interface Dao<T> {
 ```
 
 ---
+# Otras dependencias
+```groovy
+// Logger
+compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.5'
+// El driver JDBC de sqlite3
+compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.7.2'
+// ActiveJDBC
+compile group: 'org.javalite', name: 'activejdbc', version: '2.2'
+```
+
+---
+# Para aplicar el plugin
+```groovy
+// Antes de compilar el proyecto, ActiveJDBC debe entender la base de datos y hacer los mapeos necesarios
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'org.javalite', name: 'activejdbc-gradle-plugin', version: '2.2'
+    }
+}
+```
+
+Y aplicar el plugin
+
+```groovy
+apply plugin: 'org.javalite.activejdbc'
+```
+---
 # Parser personalizado
 ```java
 import org.codehaus.jackson.map.ObjectMapper;
@@ -122,6 +152,15 @@ public class JsonHelper {
 }
 ```
 
+---
+# Creación de base de datos
+```sql
+CREATE TABLE tareas (
+ id INTEGER PRIMARY KEY,
+ nombre TEXT NOT NULL,
+ descripcion TEXT
+);
+```
 ---
 # Object Model
 ```java
@@ -160,6 +199,30 @@ public class TareaDAO implements Dao<Tarea>{
 }
 ```
 
+---
+# Obtener todos los objetos
+
+```java
+get("/", (req, res) -> {
+    TareaDAO tareaDAO = new TareaDAO();
+     return ((LazyList<Tarea>)(tareaDAO.todos())).toJson(true);
+
+    }
+);
+```
+
+---
+# Guardar datos
+```java
+post("/", (req, res) -> {
+    // Tarea tarea = new Gson().fromJson(req.body(), Tarea.class);
+    String tareaJson = req.body();
+    TareaDAO tareaDAO = new TareaDAO();
+    tareaDAO.crearFromJson(tareaJson);
+    return "";
+});
+
+```
 ---
 # Actualizar y Eliminar?
 
