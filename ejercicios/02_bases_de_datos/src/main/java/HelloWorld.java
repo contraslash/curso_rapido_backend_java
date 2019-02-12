@@ -23,7 +23,11 @@ public class HelloWorld {
         });
 
         post("/", (req, res) -> {
-            Tarea tarea = new Gson().fromJson(req.body(), Tarea.class);
+
+            // Tarea tarea = new Gson().fromJson(req.body(), Tarea.class);
+            String tareaJson = req.body();
+            TareaDAO tareaDAO = new TareaDAO();
+            tareaDAO.crearFromJson(tareaJson);
             return "";
         });
 
