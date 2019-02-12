@@ -37,6 +37,4 @@ public class HelloWorld {
             return jsonObject.get("hola");
         });
     }
-
-
 }

@@ -1,0 +1,25 @@
+<html>
+    <body>
+        <div id="app" v-if="visible">
+          {{ mensaje }}
+        </div>
+        <button id="interruptor">
+            Mostrar / Ocultar
+        </button>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script>
+            var app = new Vue({
+              el: '#app',
+              data: {
+                mensaje: 'Hola mundo!',
+                visible: true
+              }
+            });
+            var interruptor = document.getElementById("interruptor");
+            interruptor.addEventListener("click", function(event)
+            {
+               app.visible = !app.visible;
+            });
+        </script>
+    </body>
+</html>
