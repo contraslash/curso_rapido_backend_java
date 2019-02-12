@@ -24,7 +24,6 @@ public class HelloWorld {
 
         post("/", (req, res) -> {
             Tarea tarea = new Gson().fromJson(req.body(), Tarea.class);
-            
             return "";
         });
 
