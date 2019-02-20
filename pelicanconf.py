@@ -11,7 +11,7 @@ sys.path.append(os.path.dirname(
 from custom_pelican_markdown_reader.readers import CustomMarkdownReader
 
 AUTHOR = 'Mauricio Collazos'
-SITENAME = 'Curso rápido de Python'
+SITENAME = 'Curso rápido de Backend con Java'
 SITEURL = ''
 
 PATH = 'content'

@@ -2,3 +2,7 @@
 build
 out
 .idea
+
+llave_icesi.pem
+
+*.iml

@@ -2,8 +2,11 @@
     <body>
         <div id="app" >
             <ol>
-                <li v-for="elemento in lista">
-                    {{ elemento }}
+                <li v-for="elemento in lista" v-if="elemento %2 == 0">
+                    <div >
+
+                        {{ elemento }}
+                    </div>
                 </li>
             </ol>
         </div>
@@ -14,9 +17,7 @@
               el: '#app',
               data: {
                 lista: [
-                    "Elemento 1",
-                    "Elemento 2",
-                    "Elemento 3"
+                    1,2,3,4,5
                 ]
               }
             });
