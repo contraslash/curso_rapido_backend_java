@@ -1,6 +1,7 @@
+package com.contraslash.java;
+
 import org.javalite.activejdbc.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TareaDAO implements Dao<Tarea>{

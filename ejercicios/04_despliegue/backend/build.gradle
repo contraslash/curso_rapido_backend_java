@@ -21,7 +21,7 @@ repositories {
 }
 
 sourceCompatibility = 1.8
-mainClassName = 'HelloWorld'
+mainClassName = 'com.contraslash.java.Application'
 
 dependencies {
     // Spark
@@ -39,6 +39,19 @@ dependencies {
     compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.7.2'
     // ActiveJDBC
     compile group: 'org.javalite', name: 'activejdbc', version: '2.2'
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "com.contraslash.java.Application"
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+
+    archiveName "app.jar"
 }
 
 apply plugin: 'java'

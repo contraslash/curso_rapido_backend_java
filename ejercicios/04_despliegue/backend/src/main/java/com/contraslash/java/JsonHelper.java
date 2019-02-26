@@ -1,3 +1,5 @@
+package com.contraslash.java;
+
 import org.codehaus.jackson.map.ObjectMapper;
 import java.io.IOException; import java.util.Map;
 

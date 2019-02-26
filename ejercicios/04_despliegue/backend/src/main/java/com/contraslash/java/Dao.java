@@ -1,3 +1,5 @@
+package com.contraslash.java;
+
 import java.util.List;
 
 public interface Dao<T> {

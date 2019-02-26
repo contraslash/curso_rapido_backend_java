@@ -1,13 +1,25 @@
+package com.contraslash.java;
+
 import static spark.Spark.*;
 
-import com.google.gson.Gson;
 import org.javalite.activejdbc.LazyList;
 import org.json.*;
+import spark.servlet.SparkApplication;
 
 
+public class Application implements SparkApplication {
+//public class Application  {
 
-public class HelloWorld {
-    public static void main(String[] args) {
+    public static  void main(String... args)
+    {
+        Application app = new Application();
+        app.init();
+    }
+
+    @Override
+    public void init() {
+
+
         get("/", (req, res) -> {
 
             TareaDAO tareaDAO = new TareaDAO();
@@ -22,7 +34,7 @@ public class HelloWorld {
 
         post("/", (req, res) -> {
 
-            // Tarea tarea = new Gson().fromJson(req.body(), Tarea.class);
+            // com.contraslash.java.Tarea tarea = new Gson().fromJson(req.body(), com.contraslash.java.Tarea.class);
             String tareaJson = req.body();
             TareaDAO tareaDAO = new TareaDAO();
             tareaDAO.crearFromJson(tareaJson);
